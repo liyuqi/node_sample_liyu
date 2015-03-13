@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+  </head>
+  <body>
+<form class="form-horizontal" method="post">
+  <fieldset>
+    <legend>新增 index</legend>
+    <div class="control-group">
+      <label class="control-label" for="index">index</label>
+      <div class="controls">
+        <input type="text" class="input-xlarge" id="index" name="index"/>　　index目錄        
+      </div>
+      <p></p>
+      <label class="control-label" for="id">id</label>
+      <div class="controls">
+        <input type="text" class="input-xlarge" id="id" name="id">       
+      </div>
+    </div>
+
+       <span class="label label-info">　　　　　　　　　　Body</span>
+　　　<p></p>
+      <div class="control-group">
+      <label class="control-label" for="title">title</label>
+      <div class="controls">
+        <input type="text" class="input-xlarge" id="title" name="title">       
+      </div>
+      <p></p>
+      <label class="control-label" for="content">content</label>
+      <div class="controls">
+        <input type="text" class="input-xlarge" id="content" name="content">       
+      </div>
+      <p></p>
+      <label class="control-label" for="date">date</label>
+      <div class="controls">
+        <input type="text" class="input-xlarge" id="date" name="date">       
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">送出</button>
+    </div>
+  </fieldset>
+</form>
+<!--這一段是存在的-->
+<% if (locals.messages) { %>
+<% messages.forEach(function(message) { %>
+<p class='<%= message.type %>'><%= message.string %></p>
+<% }) %>
+<% removeMessages() %>
+<% } %>
+
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－<br>
+
+        <p></p>
+<% if (resp) { %>
+<h1>index 結果</h1>
+    <p>index : <%= resp._index %></p>
+    <p>_type : <%= resp._type %></p>
+    <p>_id : <%= resp._id %></p>
+    <p>_version : <%= resp._version %></p>
+    <p>created : <%= resp.created %></p>
+<% } else { %>
+   <h3>No index</h3>
+<% } %>
+  </body>
+</html>

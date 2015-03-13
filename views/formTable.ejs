@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+</head>
+<body>
+
+  <legend>Table sample</legend>
+  <div class="row">
+    <div class="col-xs-8 col-sm-6">
+      <table class="table table-hover" id="myTable">
+        <thead>
+          <tr>
+            <th>userID</th>
+            <th>time</th>
+            <th>cash</th>
+            <th>service</th>
+            <th>amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>value 1</td>
+            <td>value 2</td>
+            <td>value 3</td>
+            <td>value 4</td>
+            <td>value 5</td>
+          </tr>
+        </tbody>
+      </table>
+      <ul class="pagination" id="myPager"></ul>
+      <button onclick="myCreateFunction()">Create row</button>
+      
+      
+
+    </div>
+    <div class="col-xs-4 col-sm-6">
+      Level 2: .col-xs-4 .col-sm-6
+    </div>
+  </div>
+
+
+  <script>
+    function init() {
+      if (sessionStorage.tableDataset)
+        sessionStorage.tableDataset = [value1, value2, value3, value4, value5];
+    }
+    var userID = ["A01", "A02", "A03", "B01", "B02", "B03", "C01", "C02", "C03"];
+    var date = ["20140701", "20140702", "20140703", "20140704", "20140705", "20140706", "20140707", "20140708", "20140709", "20140710"];
+    var time = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"];
+    var cash = ["Y", "N"];
+    var clerk = ["Amy", "Bob", "Cathy", "Debby", "Eva", "Feona", "Gloria", "Hana", "Ivy"];
+
+    function myCreateFunction() {
+      var table = document.getElementById("myTable");
+      {
+        for (var i = 0; i < 5;i++){
+        var row = table.insertRow(1);
+        var cell1 = row.insertCell(0).innerHTML = userID[Math.floor(Math.random() * userID.length)];
+        var cell2 = row.insertCell(1).innerHTML = date[Math.floor(Math.random() * date.length)]
+                                                + time[Math.floor(Math.random() * time.length)];
+        var cell3 = row.insertCell(2).innerHTML = cash[Math.floor(Math.random() * cash.length)];
+        var cell4 = row.insertCell(3).innerHTML = Math.floor(Math.random() * 5 + 1);
+        var cell5 = row.insertCell(4).innerHTML = Math.floor((Math.random() * 979) + 20);
+      }
+      }
+      
+    }
+
+  </script>
+
+</body>
+</html>

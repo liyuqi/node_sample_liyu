@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+  </head>
+  <body>
+      <legend>d3 data Insert</legend>
+<form class="form-horizontal" role="form" method="post">
+  <fieldset>
+      <div class="form-group">
+      <label class="col-md-2 control-label" for="name">name</label>
+      <div class="col-md-4 controls">
+        <input type="text" class="input-xlarge" id="name" name="name">       
+      </div>
+      </div>
+      
+      <div class="form-group">
+      <label class="col-md-2 control-label" for="count">count</label>
+      <div class="col-md-4 controls">
+        <input type="text" class="input-xlarge" id="count" name="count">       
+      </div>
+      </div>
+    
+
+    <div class="col-md-2 col-md-offset-2 form-actions">
+      <button type="submit" class="btn btn-primary">送出</button>
+    </div>
+  </fieldset>
+</form>
+<!--這一段是存在的-->
+<% if (locals.messages) { %>
+<% messages.forEach(function(message) { %>
+<p class='<%= message.type %>'><%= message.string %></p>
+<% }) %>
+<% removeMessages() %>
+<% } %>
+
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－<br>
+
+        <p></p>
+<% if (resp) { %>
+<h3>儲存完成</h3>
+    <p>Level : <%= resp.name %></p>
+    <p>Timestamp : <%= resp.count %></p>
+<% } else { %>
+   <h3></h3>
+<% } %>
+  </body>
+</html>

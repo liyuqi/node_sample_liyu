@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+  </head>
+  <body>
+<form class="form-horizontal" method="post">
+  <fieldset>
+    <legend>Search</legend>
+
+       <span class="label label-info">　　　　　　Search 條件</span>
+　　　<p></p>
+      <div class="control-group">
+      <label class="control-label" for="index">index</label>
+      <div class="controls">
+        <input type="text" class="input-xlarge" id="index" name="index" value="blog">       
+      </div>
+      <p></p>
+      <label class="control-label" for="matchfield">match field</label>
+      <div class="controls">
+        <input type="text" class="input-xlarge" id="matchfield" name="matchfield" value="目前無用">　　ex:date       
+      </div>
+      <p></p>
+      <label class="control-label" for="matchdate">date</label>
+      <div class="controls">
+        <input type="text" class="input-xlarge" id="matchdate" name="matchdate" value="">　　ex:2014-03-25     
+      </div>
+      <p></p>
+      <label class="control-label" for="matchtitle">match title</label>
+      <div class="controls">
+        <input type="text" class="input-xlarge" id="matchtitle" name="matchtitle" value="">　　ex:test new     
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">送出</button>
+    </div>
+  </fieldset>
+</form>
+<!--這一段是存在的-->
+<% if (locals.messages) { %>
+<% messages.forEach(function(message) { %>
+<p class='<%= message.type %>'><%= message.string %></p>
+<% }) %>
+<% removeMessages() %>
+<% } %>
+
+資料格式－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－<br>
+  hits:
+   [ { _index: 'blog',
+       _type: 'post',
+       _id: '5',
+       _score: 1,
+       _source: [Object] },
+     { _index: 'blog',
+       _type: 'post',
+       _id: '4',
+       _score: 1,
+       _source: [Object] } ] }
+        <p></p>
+  hits.hits[0] : { _index: 'blog',
+  _type: 'post',
+  _id: '5',
+  _score: 1,
+  _source:
+   { title: 'test new ',
+     content: 'test test test test test ',
+     date: '2014-03-25' } }
+     <p></p>
+<% if (resp) { %>
+<h2>搜尋結果</h2>
+    <p>total : <%= resp.total %></p>
+    <% resp.hits.forEach( function( body ){ %>
+       <p>id :<%= body._id %> : source :<%= body._source.title %></p>
+       <p>date :<%= body._source.date %> : content :<%= body._source.content %></p>
+       <p>----------------------------------------</p>
+    <% }); %>
+
+<% } else { %>
+   <h3>No index</h3>
+<% } %>
+
+  </body>
+</html>

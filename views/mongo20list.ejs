@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+  </head>
+  <body>
+<form class="form-horizontal" role="form" method="post">
+  <fieldset>
+    <legend>精確搜尋 No RegEx</legend>
+      <div class="form-group">
+      <label class="col-md-2 control-label" for="matchdate">Timestamp</label>
+      <div class="col-md-4 controls">
+        <input type="text" class="input-xlarge" id="matchdate" name="matchdate" value="" disabled="disabled">　　ex:2014-03-25     
+      </div>
+      </div>
+
+      <div class="form-group">
+      <label class="col-md-2 control-label" for="hostip">Client IP</label>
+      <div class="col-md-4 controls">
+        <input type="text" class="input-xlarge" id="hostip" name="hostip" value="">　　ex:10.10.1.1     
+      </div>
+    </div>
+
+    <div class="col-md-2 col-md-offset-2 form-actions">
+      <button type="submit" class="btn btn-primary">search</button>
+    </div>
+  </fieldset>
+</form>
+<!--這一段是存在的-->
+<% if (locals.messages) { %>
+<% messages.forEach(function(message) { %>
+<p class='<%= message.type %>'><%= message.string %></p>
+<% }) %>
+<% removeMessages() %>
+<% } %>
+
+        <p></p>
+
+<% if (resp) { %>
+<h3>搜尋結果</h3><br/>
+    <% if (resp.length==0) { %>
+      <h4>查無資料!</h4>
+    <% } else{ %>
+    
+    <table class="table">
+      <caption></caption>
+      <thead>
+        <tr>
+          <th>Level</th>
+          <th>Timestamp</th>
+          <th>Message</th>
+          <th>Id</th>
+          <th>Host</th>
+        </tr>
+      </thead>
+    <tbody>
+    <% resp.forEach( function( body ){ %>
+    <tr>
+      <td><%= body.level %></td>
+      <%if(body.timestamp) {  
+      if(body.timestamp.toString().length>12){%>
+        <td><%= body.timestamp.toString().replace(/T/, ' ').replace(/\..+/, '')  %></td>
+      <% } else { %>
+        <td><%= body.timestamp %></td>
+      <% } } %>
+      <td><%= body.message %></td>
+      <td><%= body._id %></td>
+       <% if( body.host ){%>
+      <td><%= body.host.ip %></td>
+       <% } %>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
+   <% } %>
+<% } else { %>
+   <p>總量 : <%= totalcount %>筆資料</p>
+<% } %>
+<% if (logdetail) { %>
+<hr><h4>詳細資料:</h4>
+  <%= logdetail %>
+<% } %>
+  </body>
+</html>

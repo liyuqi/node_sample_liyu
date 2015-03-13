@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+  </head>
+  <body>
+    <h1><%= title %> health</h1>
+        <p></p>
+    <p>cluster_name : <%= health.cluster_name %></p>
+    <p>status : <%= health.status %></p>
+    <p>timed_out : <%= health.timed_out %></p>
+    <p>number_of_nodes : <%= health.number_of_nodes %></p>   
+    <p>number_of_data_nodes : <%= health.number_of_data_nodes %></p>
+    <p>active_primary_shards : <%= health.active_primary_shards %></p>
+    <p>active_shards : <%= health.active_shards %></p>
+    <p>relocating_shards : <%= health.relocating_shards %></p> 
+    <p>initializing_shards : <%= health.initializing_shards %></p>
+    <p>unassigned_shards : <%= health.unassigned_shards %></p>
+  </body>
+</html>

@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <script src="/javascripts/jquery-1.11.0.min.js"></script>
+</head>
+<body>
+
+  <div class="col-md-9">
+    
+    <h3>Form Horizontal</h3>
+    
+    <form class="form-horizontal well" id="form1" method="post">
+      <fieldset id="form2">
+        <legend>Bootstrap 3 Inputs</legend>
+        <div class="control-group">
+          <label class="control-label" for="input01">Text input</label>
+          <div class="controls">
+            <input type="text" class="form-control input-xlarge" name="input01" id="input01">
+            <p class="help-block">help</p>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label" for="optionsCheckbox">Checkbox</label>
+          <label class="checkbox-inline">
+            <input type="checkbox" name="inlineCheckbox" id="inlineCheckbox1" value="check1">1
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" name="inlineCheckbox" id="inlineCheckbox2" value="check2">2
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" name="inlineCheckbox" id="inlineCheckbox3" value="check3">3
+          </label>
+          </div>
+
+
+        <div class="control-group">
+          <label class="control-label" for="optionsRadio">Radio</label>
+          <label class="checkbox-inline">
+            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="radio1">1
+          </label>
+          <label class="checkbox-inline">
+            <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="radio2">2
+          </label>
+          <label class="checkbox-inline">
+            <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="radio3">3
+          </label>
+          </div>
+
+
+        <div class="control-group">
+          <label class="control-label" for="select01">Select list</label>
+          <div class="controls">
+            <select name="select01" id="select01" class="form-control">
+              <option>option1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="multiSelect">Multicon-select</label>
+          <div class="controls">
+            <select multiple="multiple" name="multiSelect" id="multiSelect" class="form-control">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="fileInput">File input</label>
+          <div class="controls">
+            <input class="form-control input-file" name="fileInput" id="fileInput" type="file">
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="textarea">Textarea</label>
+          <div class="controls">
+            <textarea class="form-control input-xlarge" name="textarea" id="textarea" rows="3"></textarea>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="optionsCheckbox2">Disabled checkbox</label>
+          <div class="controls">
+            <label class="checkbox">
+              <input type="checkbox" id="optionsCheckbox2" value="option1" disabled="">
+              disabled checkbox
+            </label>
+          </div>
+        </div>
+        <div class="control-group warning">
+          <label class="control-label" for="inputWarning">Input with yello warn</label>
+          <div class="controls">
+            <input type="text" id="inputWarning" class="form-control">
+            <span class="help-inline">help inline</span>
+          </div>
+        </div>
+        <hr>
+        <div class="form-actions">
+          <button class="btn btn-primary" onclick="myFunction()">Save changes</button>
+          <!--<button type="reset" class="btn">Cancel</button>-->
+        </div>
+      </fieldset>
+    </form>
+
+
+    <div id="demo">
+              <p></p>
+
+      <% if (resp) { %>
+    <h3>form value</h3>
+      <br />
+      <% if (resp.length==0) { %>
+        <% } else{ %>
+          <% resp.forEach( function( body ){ %>
+				<p><%= body %></p>
+		    <% })}}%>
+    </div>
+
+
+  <script>
+    //get時,閃一下就跳新頁,
+    function myFunction() {
+      var x = document.getElementById("form1");
+      var text = "";
+      var showtext = "";
+      var i;
+      for (i = 0; i < x.length ; i++) {
+        text += x.elements[i].value + "<br>";
+        showtext += x.elements[i].value + "\n";
+      }
+      document.getElementById("demo").innerHTML = text;
+      //alert(showtext);
+    }
+  </script>
+
+</body>
+</html>

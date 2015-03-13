@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>D3: A simple CSS-only hover effect</title>
+      <script src="/javascripts/d3.v3.js"></script>
+		<style type="text/css">
+
+		  rect:hover {
+		    fill:orange;
+      }
+
+		</style>
+	</head>
+	<body>
+
+    <div class="row">
+      <div class="col-md-6">
+        <legend>Bar</legend>
+        <div id="chart_div"></div>
+      </div>
+    </div>
+
+
+		<script type="text/javascript">
+
+       /*
+		  var dataset = [5, 10, 13, 19, 21, 25, 22, 18, 15, 13,
+							11, 12, 15, 20, 18, 17, 16, 18, 23, 25];
+     */
+		  var dataset = [
+        { name: "A", value: 5 },
+        { name: "B", value: 10 },
+        { name: "C", value: 13 },
+        { name: "D", value: 19 },
+        { name: "E", value: 21 },
+        { name: "F", value: 25 },
+        { name: "G", value: 22 },
+        { name: "H", value: 18 },
+        { name: "I", value: 15 },
+        { name: "J", value: 13 }
+		  ];
+
+      /*
+		  d3.select("#chart_div").selectAll("p")
+				.data(dataset)
+				.enter()
+				.append("p")
+				.text(function (d) { return d.value; });
+			*/
+
+		  //Width and height
+		  var w = 600;
+		  var h = 250;
+
+
+
+		  var dataset = [
+              { name: "A", value: 5 },		//dataset is now an array of objects.
+							{ name: "B", value: 10 },		//Each object has a 'key' and a 'value'.
+							{ name: "C", value: 13 },
+							{ name: "D", value: 19 },
+							{ name: "E", value: 21 },
+							{ name: "F", value: 25 },
+							{ name: "G", value: 22 },
+							{ name: "H", value: 18 },
+							{ name: "I", value: 15 },
+							{ name: "J", value: 13 },
+							{ name: "K", value: 11 },
+							{ name: "L", value: 12 },
+							{ name: "M", value: 15 },
+							{ name: "N", value: 20 },
+							{ name: "O", value: 18 },
+							{ name: "P", value: 17 },
+							{ name: "Q", value: 16 },
+							{ name: "R", value: 18 },
+							{ name: "S", value: 23 },
+							{ name: "T", value: 25 }];
+
+		  var xScale = d3.scale.ordinal()
+							.domain(d3.range(dataset.length))
+							.rangeRoundBands([0, w], 0.05);
+
+		  var yScale = d3.scale.linear()
+							.domain([0, d3.max(dataset, function (d) { return d.value; })])
+							.range([0, h]);
+
+		  //Define key function, to be used when binding data
+		  var key = function (d) {
+		    return d.name;
+		  };
+
+		  //Create SVG element
+		  var svg = d3.select("#chart_div")
+						.append("svg")
+						.attr("width", w)
+						.attr("height", h);
+
+		  //Create bars
+		  svg.selectAll("rect")
+			   .data(dataset)		//Bind data with custom key function
+			   .enter()
+			   .append("rect")
+			   .attr("x", function (d, i) {
+			     return xScale(i);
+			   })
+			   .attr("y", function (d) {
+			     return h - yScale(d.value);
+			   })
+			   .attr("width", xScale.rangeBand())
+			   .attr("height", function (d) {
+			     return yScale(d.value);
+			   })
+			   .attr("fill", function (d) {
+			     return "rgb(0, 0, " + (d.value * 10) + ")";
+			   });
+
+		  //Create labels
+		  svg.selectAll("text")
+			   .data(dataset)		//Bind data with custom key function
+			   .enter()
+			   .append("text")
+			   .text(function (d) {
+			     return d.name+" "+d.value;
+			   })
+			   .attr("text-anchor", "middle")
+			   .attr("x", function (d, i) {
+			     return xScale(i) + xScale.rangeBand() / 2;
+			   })
+			   .attr("y", function (d) {
+			     return h - yScale(d.value) + 14;
+			   })
+			   .attr("font-family", "sans-serif")
+			   .attr("font-size", "11px")
+			   .attr("fill", "white");
+
+      /**/
+		</script>
+	</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="utf-8">
+<head>
+    <meta charset="utf-8">
+    <title><%= title %> -</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="/stylesheets/dashboard.css" rel="stylesheet">
+    
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="/Scripts/bootstrap/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/Images/bootstrap/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/Images/bootstrap/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/Images/bootstrap/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/Images/bootstrap/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="/Images/bootstrap/ico/favicon.png">
+</head>
+
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Sample Site</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Help</a></li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-2 col-md-2 sidebar">
+          
+            <ul class="nav nav-sidebar">
+                <li class="panel-heading">Form demo</li>
+                <li><a href="/formComponent">component</a></li>
+                <li><a href="/formTable">table</a></li>
+                <li><a href="/formPaging">paging</a></li>
+            </ul>
+
+            
+            <ul class="nav nav-sidebar">
+                <li class="panel-heading">MongoDB Demo</li>
+                <li><a href="/mongolog">Read</a></li>
+                <li><a href="/mongoInsert">Create</a></li>
+                <li><a href="/mongo20list">NoRegExp</a></li>
+            </ul>
+            
+            <ul class="nav nav-sidebar">
+                <li class="panel-heading">d3 demo</li>
+                <li><a href="/d3DataInsert">insert</a></li>
+                <li><a href="/d3DataPie2">Pie</a></li>
+                <li><a href="/d3DataLine2">Line</a></li>
+            </ul>
+        </div>
+
+        <div class="col-sm-9 col-sm-offset-2 col-md-10 col-md-offset-2 main">
+          <%- body %>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+      <script src="/javascripts/bootstrap.min.js"></script>
+  </body>
+</html>
+
